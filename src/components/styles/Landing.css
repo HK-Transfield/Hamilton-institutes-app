@@ -1,0 +1,98 @@
+.landing-mid-container {
+  z-index: 2;
+  width: 100vw;
+  height: 3300px;
+  position: absolute;
+  background-image: url("../../assets/img/vectors/triangles-bg.svg");
+  background-repeat: no-repeat;
+  background-position: top;
+  background-size: cover;
+  padding-top: 450px;
+  padding-left: 40px;
+  padding-right: 40px;
+  padding-bottom: 60px;
+}
+
+.landing-bottom {
+  filter: grayscale(100%);
+  position: relative;
+  width: 100vw;
+  height: 100%;
+  min-height: 1280px;
+  overflow: hidden;
+  background-image: url("https://assets.ldscdn.org/8c/d7/8cd7a3a0cecefbb7b7039bb8f645f16402218978/hamilton_new_zealand_lds_temple.jpeg");
+  background-position: center;
+}
+
+@keyframes flickerAnimation {
+  0% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+@-o-keyframes flickerAnimation {
+  0% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+@-moz-keyframes flickerAnimation {
+  0% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+@-webkit-keyframes flickerAnimation {
+  0% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+.icon-container {
+  width: inherit;
+  height: 300px;
+  text-align: center;
+  top: -30px;
+}
+
+.icon-arrow {
+  -webkit-animation: flickerAnimation 1s infinite;
+  -moz-animation: flickerAnimation 1s infinite;
+  -o-animation: flickerAnimation 1s infinite;
+  animation: flickerAnimation 2s infinite;
+  color: darkred;
+  height: 100px;
+  width: 200px;
+  margin-right: 50px;
+}
+
+@media only screen and (max-width: 620px) {
+  .landing-mid-container {
+    height: 2100px;
+    padding-top: 400px;
+    align-items: center;
+    justify-content: center;
+    display: block;
+  }
+}

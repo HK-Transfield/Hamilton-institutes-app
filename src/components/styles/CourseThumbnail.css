@@ -1,0 +1,66 @@
+@import url("https://fonts.googleapis.com/css2?family=Libre+Baskerville&display=swap");
+
+.course-thumbnail-container {
+  width: 320px;
+  height: 210px;
+  margin: 20px;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+  transition: 0.3s;
+  background-color: white;
+  position: relative;
+  overflow: hidden;
+}
+
+.course-thumbnail-container:hover {
+  box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2);
+  transform: scale(1.1);
+  cursor: pointer;
+}
+
+.course-type-bar {
+  display: block;
+  position: relative;
+  width: inherit;
+  height: 10px;
+  top: 0px;
+}
+
+.course-thumbnail-container img {
+  width: inherit;
+  opacity: 0.8;
+  transition: 0.3s;
+}
+
+.course-thumbnail-container img:hover {
+  opacity: 1;
+}
+
+.title-container {
+  position: absolute;
+  width: inherit;
+  bottom: 0px;
+}
+
+.title-grad {
+  width: inherit;
+  height: 50px;
+  margin-bottom: -2px;
+  background-image: linear-gradient(
+    to bottom,
+    rgba(255, 255, 255, 0),
+    rgba(255, 255, 255, 1)
+  );
+}
+
+.title-block {
+  width: inherit;
+  padding: 10px;
+  height: 40px;
+  text-align: center;
+  background-color: white;
+}
+
+.title-block h6 {
+  font-family: "Libre Baskerville", "Georgia", serif;
+  font-weight: bold;
+}

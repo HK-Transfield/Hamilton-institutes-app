@@ -1,0 +1,56 @@
+.slide-container {
+  text-align: center;
+  position: relative;
+  width: 100vw;
+  height: 800px;
+  overflow: hidden;
+  margin-top: 60px;
+}
+
+.triangle-overlay {
+  background-image: url("../../assets/img/vectors/triangles.svg");
+  background-repeat: no-repeat;
+  background-position: cover;
+  background-size: 100%, 100%;
+  width: inherit;
+  height: 100%;
+  position: absolute;
+  z-index: 2;
+  top: 45%;
+  align-items: baseline;
+}
+
+.slide-show {
+  width: inherit;
+  height: inherit;
+  overflow: hidden;
+}
+
+.slide-img {
+  width: 100%;
+  height: auto;
+}
+
+@media only screen and (max-width: 320px) {
+  .triangle-overlay {
+    top: 85px;
+  }
+}
+
+@media (min-width: 321px) and (max-width: 374px) {
+  .triangle-overlay {
+    top: 150px;
+  }
+}
+
+@media (min-width: 375px) and (max-width: 410px) {
+  .triangle-overlay {
+    top: 150px;
+  }
+}
+
+@media (min-width: 411px) and (max-width: 619px) {
+  .triangle-overlay {
+    top: 115px;
+  }
+}

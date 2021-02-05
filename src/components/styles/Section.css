@@ -1,0 +1,108 @@
+@import url("https://fonts.googleapis.com/css2?family=Libre+Baskerville&display=swap");
+
+.section-container {
+  display: inline-block;
+  margin-bottom: 750px;
+}
+
+.section-container p,
+.section-container h3 {
+  text-align: justify;
+  display: inline;
+}
+
+.section-header {
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+  /*font-family: "Libre Baskerville", "Georgia", serif;*/
+  color: maroon;
+  font-weight: bold;
+  font-size: 52px;
+}
+
+.section-text {
+  font-size: 35px;
+}
+
+.section-bottom {
+  text-align: center;
+}
+
+.section-bottom-button {
+  margin-top: 10px;
+  background-image: linear-gradient(
+    90deg,
+    #ff8c8c 0%,
+    #c72171 52%,
+    #ff0066 100%
+  );
+  border-top: 0px;
+  border-left: 0px;
+  border-right: 0px;
+  border-bottom: 10px solid #7a0126;
+  padding: 10px;
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+  font-weight: bold;
+  color: white;
+  font-size: 35px;
+}
+
+/**************************************************************************/
+@media only screen and (max-width: 620px) {
+  .section-container {
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    width: 100%;
+    display: block;
+    margin-bottom: 200px;
+  }
+
+  .section-container img {
+    display: block;
+    width: 100%;
+    margin-bottom: 20px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .section-header {
+    font-size: 35px;
+    display: block;
+  }
+
+  .section-text {
+    font-size: 20px;
+  }
+
+  .img-container {
+    float: none;
+    width: 100%;
+  }
+}
+/**************************************************************************/
+@media (min-width: 320px) and (max-width: 375px) {
+  .section-header {
+    font-size: 25px;
+    display: block;
+  }
+
+  .section-text {
+    font-size: 18px;
+  }
+
+  .section-bottom-button {
+    width: 50%;
+    font-size: 25px;
+  }
+}
+
+@media (min-width: 376px) and (max-width: 414px) {
+  .section-header {
+    font-size: 28px;
+    display: block;
+  }
+
+  .section-text {
+    font-size: 20px;
+  }
+}
