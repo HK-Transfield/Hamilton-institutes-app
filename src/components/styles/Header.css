@@ -1,14 +1,18 @@
 @import url("https://fonts.googleapis.com/css2?family=Libre+Baskerville&display=swap");
 
 /***********DESKTOP STYLES**********/
-.nav-bar {
+.ui.menu.nav-bar {
   background-color: #e00748;
   padding-left: 40px;
   padding-right: 40px;
   height: 60px;
+  font-size: 20px;
+  color: white;
+  border-radius: 0px;
 }
 
 .nav-brand {
+  margin-top: 20px;
   font-family: "Libre Baskerville", "Georgia", serif;
   font-size: 25px;
 }
@@ -22,9 +26,13 @@
   text-decoration: none;
 }
 
-.link-button {
-  border-right: solid;
-  font-size: 25px;
+.nav-items {
+  float: right;
+}
+
+.nav-link {
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+  color: rgb(255, 162, 190);
 }
 
 /***********MOBILE STYLES**********/

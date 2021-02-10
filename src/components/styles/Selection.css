@@ -1,7 +1,15 @@
+@import url("https://fonts.googleapis.com/css2?family=Libre+Baskerville&display=swap");
+
 .course-thumbnails {
   width: 320px;
 }
 
 .modal-container {
   z-index: 1000;
+}
+
+.ui.header.tab-header {
+  width: 100%;
+  text-align: center;
+  font-family: "Libre Baskerville", "Georgia", serif;
 }

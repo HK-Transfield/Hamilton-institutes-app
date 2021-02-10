@@ -1,6 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import { Menu as DesktopMenu } from 'semantic-ui-react';
+import { Menu } from 'semantic-ui-react';
 import './styles/Header.css';
 // import 'semantic-ui-css/semantic.min.css';
 import fbLogo from '../assets/img/vectors/facebook-square.svg';
@@ -34,35 +34,31 @@ export class DesktopHeader extends React.Component {
                 <Link 
                     to={navItem.linkTo} 
                     key={navItem.linkTo}
+                    className="nav-items"
                 >
-                    <DesktopMenu.Item
+                    <Menu.Item
                         name={navItem.title}
                         active={activeItem === navItem.title}
                         onClick={this.handleItemClick}
-                        className="desktop-item"
                     >
+                        <p className="nav-link">
                         {navItem.title}
-                    </DesktopMenu.Item>
+                        </p>
+                    </Menu.Item>
                </Link>
             );
         });
     
         return (
             <header>
-                <DesktopMenu 
-                    style={
-                        {
-                            backgroundColor: "e00748",
-                            height: "60px"
-                        }
-                    }>
+                <Menu className="nav-bar">
                     <Link className="nav-brand" to="/">
-                        <DesktopMenu.Header>
+                        <Menu.Header>
                             HAMILTON INSTITUTES
-                        </DesktopMenu.Header>
+                        </Menu.Header>
                     </Link>
                        {navLinksJsx}
-                </DesktopMenu>
+                </Menu>
             </header>     
         );
     }
@@ -105,7 +101,7 @@ export class MobileHeader extends React.Component {
             <MenuButton open={this.state.menuOpen} onClick={()=>this.handleMenuClick()} color='white'/>
             <div className="mobile-logo">HAMILTON INSTITUTES</div>
           </div>
-          <Menu open={this.state.menuOpen}>
+          <HamburgerMenu open={this.state.menuOpen}>
             {navLinksJsx}
 
             {/* Decided to add only the Facebook link here,
@@ -119,7 +115,7 @@ export class MobileHeader extends React.Component {
                 </a>
             
             </MenuItem>
-          </Menu>
+          </HamburgerMenu>
         </div>
       );
     };
@@ -145,7 +141,7 @@ const MenuItem = (props) => {
   
 
   /* Menu.jsx */
-class Menu extends React.Component {
+class HamburgerMenu extends React.Component {
     constructor(props){
       super(props);
       this.state={

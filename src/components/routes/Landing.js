@@ -1,10 +1,9 @@
 import React from "react";
 import '../styles/Landing.css';
 import ImageSlider from "../ImageSlider";
+import DoubleArrow from '../../assets/img/vectors/icon-arrows.svg';
 import Section, {SectionBottom} from "../Section";
 import {Parallax, ParallaxLayer} from 'react-spring/renderprops-addons';
-import { Icon, InlineIcon } from '@iconify/react';
-import baselineDoubleArrow from '@iconify-icons/ic/baseline-double-arrow';
 
 /**
  *  Hamilton Institutes — landing page
@@ -110,12 +109,7 @@ export default class Landing extends React.Component {
                 >
                     <div className="landing-mid-container" preserveAspectRatio="none">
                         <div className="icon-container">
-                            <Icon 
-                                className="icon-arrow" 
-                                icon={baselineDoubleArrow} 
-                                rotate="90deg"
-                                align="middle"
-                            />
+                            <img className="icon-arrow" src={DoubleArrow} alt="double arrow icon"/>
                         </div>
                         <Section setAlignment={true} index={0}/>
                         <Section setAlignment={false} index={1}/>

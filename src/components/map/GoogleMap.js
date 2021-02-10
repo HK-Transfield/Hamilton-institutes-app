@@ -5,6 +5,9 @@ import locationIcon from '@iconify/icons-mdi/map-marker';
 import '../styles/Map.css';
 
 
+/**
+ * Google map data for the locations of each institute
+ */
 const instituteLocations = [
     {
         // location index: 0

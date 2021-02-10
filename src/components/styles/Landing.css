@@ -80,7 +80,7 @@
   -webkit-animation: flickerAnimation 1s infinite;
   -moz-animation: flickerAnimation 1s infinite;
   -o-animation: flickerAnimation 1s infinite;
-  animation: flickerAnimation 2s infinite;
+  animation: flickerAnimation 1.5s infinite;
   color: darkred;
   height: 100px;
   width: 200px;
