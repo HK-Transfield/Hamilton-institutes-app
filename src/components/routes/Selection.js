@@ -1,11 +1,11 @@
 import React from "react";
 import "../styles/Selection.css";
-import CourseModal  from "../CourseViews";
 import GoogleMap from '../map/GoogleMap';
 import { Switch, Router } from 'react-router-dom';
-import { Tab, Header, Table } from 'semantic-ui-react';
+import { Tab, Header } from 'semantic-ui-react';
 import ReactDOM from 'react-dom';
 import { courseTest } from '../CourseTest';
+import { MultiTimeSlotTable, SingleTimeSlotTable } from '../TimetableFormat';
 
 
 /**
@@ -19,10 +19,6 @@ export default class Selection extends React.Component {
 
     constructor(props) {
         super(props);
-        this.displayCourseInformation = this.displayCourseInformation.bind(this);
-        this.handleOpenModal = this.handleOpenModal.bind(this);
-        this.handleCloseModal = this.handleCloseModal.bind(this);
-        this.updateCurrentViewedId = this.updateCurrentViewedId.bind(this);
         this.state = {
             modalOpened: false,
             loading: true,
@@ -59,22 +55,6 @@ export default class Selection extends React.Component {
         console.log("unmounting...")
     };
 
-    displayCourseInformation() {
-        console.log("clicked");
-    };
-
-    handleOpenModal() {
-        this.setState({ modalOpened: true });
-      };
-      
-    handleCloseModal() {
-        this.setState({ modalOpened: false, currentViewedId: 0 });
-    };
-    
-    updateCurrentViewedId (id) {
-        this.setState({currentViewedId: id});
-    }
-    
     render() {
 
         /**
@@ -89,89 +69,21 @@ export default class Selection extends React.Component {
                         {/* <GoogleMap locationIndex={0}/>                    */}
                         <Header className="tab-header" as="h2">Day Classes</Header>
                         
-                        <div className="table-container">
-                            <Table
-                                stackable={false}
-                                color="red" 
-                                celled 
-                                padded 
-                                style={{fontFamily: "'verdana'"}}
-                            >
-                                <Table.Header>
-                                    <Table.Row>
-                                        <Table.HeaderCell textAlign="center">Time</Table.HeaderCell>
-                                        <Table.HeaderCell textAlign="center">Monday</Table.HeaderCell>
-                                        <Table.HeaderCell textAlign="center">Tuesday</Table.HeaderCell>
-                                        <Table.HeaderCell textAlign="center">Wednesday</Table.HeaderCell>
-                                        <Table.HeaderCell textAlign="center">Thursday</Table.HeaderCell>
-                                        <Table.HeaderCell textAlign="center">Friday</Table.HeaderCell>
-                                    </Table.Row>
-                                </Table.Header>
-                                <Table.Body>
-                                    {/* classes from 11:10am - 11:50am at Hillcrest Rd */}
-                                    <Table.Row>
-                                        <Table.HeaderCell textAlign="center">11:10 am — 11:50 am</Table.HeaderCell>
-                                        <Table.Cell textAlign="center">
-                                            <div>
-                                                <CourseModal courses={this.hillcrestCourses}/>
-                                            </div>
-                                        </Table.Cell>
-                                        <Table.Cell textAlign="center">
-                                            <div>
-                                                <CourseModal courses={this.hillcrestCourses}/>
-                                            </div>
-                                        </Table.Cell>
-                                        <Table.Cell textAlign="center"></Table.Cell>
-                                        <Table.Cell textAlign="center"></Table.Cell>
-                                        <Table.Cell textAlign="center"></Table.Cell>
-                                    </Table.Row>
-                                    
-                                    {/* classes from 1:10pm - 2:00pm at Hillcrest Rd */}
-                                    <Table.Row>
-                                        <Table.HeaderCell textAlign="center">1:10 pm — 2:00 pm</Table.HeaderCell>
-                                        <Table.Cell textAlign="center"></Table.Cell>
-                                        <Table.Cell textAlign="center">
-                                        <div>
-                                                <CourseModal courses={this.hillcrestCourses}/>
-                                            </div>
-                                        </Table.Cell>
-                                        <Table.Cell textAlign="center"></Table.Cell>
-                                        <Table.Cell textAlign="center"></Table.Cell>
-                                        <Table.Cell textAlign="center">
-                                            <div>
-                                                <CourseModal courses={this.hillcrestCourses}/>
-                                            </div>
-                                        </Table.Cell>
-                                    </Table.Row>
-                                </Table.Body>
-                            </Table>
-                        </div>
+                       <MultiTimeSlotTable
+                        timeSlot1="11:10 am — 11:50 am"
+                        timeSlot2="1:10 pm — 2:00 pm"
+                        
+                        timeOfDay="day"
+                        courses={this.hillcrestCourses}
+                       />
             
                         
                         <Header className="tab-header" as="h2">Evening Classes</Header>
-                        <Table color="violet" celled padded style={{overflowX: "auto"}}>
-                            <Table.Header>
-                                    <Table.Row>
-                                        <Table.HeaderCell>Time</Table.HeaderCell>
-                                        <Table.HeaderCell>Monday</Table.HeaderCell>
-                                        <Table.HeaderCell>Tuesday</Table.HeaderCell>
-                                        <Table.HeaderCell>Wednesday</Table.HeaderCell>
-                                        <Table.HeaderCell>Thursday</Table.HeaderCell>
-                                        <Table.HeaderCell>Friday</Table.HeaderCell>
-                                    </Table.Row>
-                                </Table.Header>
-                                <Table.Body>
-                                    {/* classes from 6:00 pm - 7:00 pm at Hillcrest Rd */}
-                                    <Table.Row>
-                                        <Table.HeaderCell>6:00 pm — 7:00 pm</Table.HeaderCell>
-                                        <Table.Cell></Table.Cell>
-                                        <Table.Cell></Table.Cell>
-                                        <Table.Cell></Table.Cell>
-                                        <Table.Cell></Table.Cell>
-                                        <Table.Cell></Table.Cell>
-                                    </Table.Row>
-                                </Table.Body>
-                            </Table>
+                        <SingleTimeSlotTable
+                            timeSlot="6:00 pm — 7:00 pm"
+                            timeOfDay="evening"
+                            courses={this.hillcrestCourses}
+                        />
                     </Tab.Pane>,
                 },
                 {
@@ -180,10 +92,18 @@ export default class Selection extends React.Component {
                     render: () => <Tab.Pane attached={false}>
                         {/* <GoogleMap locationIndex={1}/>                      */}
                         <Header className="tab-header" as="h2">Day Classes</Header>
-                        <hr/>
-                        <CourseModal courses={this.wardStCourses}/>
+                        <SingleTimeSlotTable
+                            timeSlot="12:10 pm — 1:00 pm"
+                            timeOfDay="day"
+                            courses={this.wardStCourses}
+                        />
+                        
                         <Header className="tab-header" as="h2">Evening Classes</Header>
-                        <hr/>
+                        <SingleTimeSlotTable
+                            timeSlot="6:30 pm — 7:00 pm"
+                            timeOfDay="evening"
+                            courses={this.wardStCourses}
+                        />
                     </Tab.Pane>,
                 },
                 {
@@ -197,8 +117,8 @@ export default class Selection extends React.Component {
         return (
             <div className="selection">
                 {this.props.header}
-                
-                <Tab className="selection-tabs" panes={panes}/>
+            
+                <Tab className="selection-tabs" menu={{ attached: false, tabular: false }} panes={panes} />
         
                 {/*this.props.footer*/}   
             </div>

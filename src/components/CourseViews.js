@@ -26,51 +26,51 @@ import {
 } from "react-router-dom";
 
 
-/**
- * 
- * @param {array} props.courses Courses available at each location
- * @version 1.0
- */
-const CourseModal = (props) => {
-    const [clicked, setClicked] = React.useState(false);
-    let {path, url} = useRouteMatch();
-    let location = useLocation();
+// /**
+//  * 
+//  * @param {array} props.courses Courses available at each location
+//  * @version 1.0
+//  */
+// const CourseModal = (props) => {
+//     const [clicked, setClicked] = React.useState(false);
+//     let {path, url} = useRouteMatch();
+//     let location = useLocation();
 
-    let courseModal = props.courses.map(course => {
-        return(
-           <div>
-                <CreateCourseModal
-                    key={course.id}
-                    course={course}
-                />
-                {/* <Link 
-                    to={`/course-selection${course.url}`}
-                    // onClick={() => setClicked(true)}
-                >
-                    <CourseThumbnail
-                        key={course.id} 
-                        imgUrl={course.thumbnailURL}
-                        title={course.title}
-                        courseType={course.courseType}
-                    />
-                </Link>
-                <Route exact 
-                    path={"/course-selection/:id"} 
-                    children={ 
-                        <CreateCourseModal
-                            key={course.id}
-                            course={course}
-                            isClicked={true}
-                        />
-                    }
-                /> */}
+//     let courseModal = props.courses.map(course => {
+//         return(
+//            <div>
+//                 <CreateCourseModal
+//                     key={course.id}
+//                     course={course}
+//                 />
+//                 {/* <Link 
+//                     to={`/course-selection${course.url}`}
+//                     // onClick={() => setClicked(true)}
+//                 >
+//                     <CourseThumbnail
+//                         key={course.id} 
+//                         imgUrl={course.thumbnailURL}
+//                         title={course.title}
+//                         courseType={course.courseType}
+//                     />
+//                 </Link>
+//                 <Route exact 
+//                     path={"/course-selection/:id"} 
+//                     children={ 
+//                         <CreateCourseModal
+//                             key={course.id}
+//                             course={course}
+//                             isClicked={true}
+//                         />
+//                     }
+//                 /> */}
          
-           </div>
-        );
-    });
-    return courseModal;
-} 
-export default CourseModal;
+//            </div>
+//         );
+//     });
+//     return courseModal;
+// } 
+// export default CourseModal;
 
 
 // https://blog.logrocket.com/building-a-modal-module-for-react-with-react-router/
@@ -80,7 +80,7 @@ export default CourseModal;
  * @param {boolean} props.isClicked 
  * @param {object} param1 
  */
-const CreateCourseModal = (props) => {
+const CourseModal = (props) => {
     /*
     The modal inside semantic-ui-react has a boolean open prop. Once you 
     define that prop you are overriding the internal state that is 
@@ -103,8 +103,15 @@ const CreateCourseModal = (props) => {
     the router push.
     */
     const [open, setOpen] = React.useState(false);
-    
-    let history = useHistory();
+    const course = props.course;
+    const triggerThumbnail = <div>
+        <CourseThumbnail
+            key={course.id} 
+            imgUrl={course.thumbnailURL}
+            title={course.title}
+            courseType={course.courseType}  
+        />
+    </div>
 
     let back = e => {
         setOpen(false)
@@ -119,20 +126,11 @@ const CreateCourseModal = (props) => {
             onClose={() => setOpen(false)}
             onOpen={() => setOpen(true)}
             open={open}
-            trigger={
-                <div>
-                    <CourseThumbnail
-                        key={props.course.id} 
-                        imgUrl={props.course.thumbnailURL}
-                        title={props.course.title}
-                        courseType={props.course.courseType}  
-                    />
-                </div>
-            }
+            trigger={triggerThumbnail}
             style={
                 {
                     borderTop: "5px solid", 
-                    borderColor: setBarColor(props.course.courseType)
+                    borderColor: setBarColor(course.courseType)
                 }
             }
         >
@@ -146,17 +144,17 @@ const CreateCourseModal = (props) => {
                 } 
                 className="modal-header"
             >
-                {props.course.title}
+                {course.title}
             </Modal.Header>
             <Image fluid={true} src="https://d3ewd3ysu1dfsj.cloudfront.net/images/stories/large/59523.jpg?1606777992"/>
             <Modal.Content>
                 
                 <Modal.Description style={{fontFamily: "Verdana"}}>
                     <Header>Teacher</Header>
-                    <p>{props.course.teacher}</p>
+                    <p>{course.teacher}</p>
                     
                     <Header>Description</Header>
-                    <p>{props.course.description}</p>
+                    <p>{course.description}</p>
 
                     <Header>Share this Course!</Header>
                     <HelmetMetaData></HelmetMetaData>
@@ -185,6 +183,7 @@ const CreateCourseModal = (props) => {
         </Modal>        
     );
 }
+export default CourseModal;
 
 
 /**

@@ -14,7 +14,7 @@
   font-family: "Libre Baskerville", "Georgia", serif;
 }
 
-.table-container {
+.ui.table.table-container {
   overflow-x: auto;
 }
 
@@ -24,7 +24,7 @@
     margin-top: 80px;
   }
 
-  .table-container {
-    overflow-x: auto;
+  .ui.table.table-container {
+    overflow-x: auto !important;
   }
 }
