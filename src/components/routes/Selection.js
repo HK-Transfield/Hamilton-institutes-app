@@ -67,15 +67,15 @@ export default class Selection extends React.Component {
                     menuItem: 'Hillcrest Rd',
                     render: () => <Tab.Pane attached={false}>
                         {/* <GoogleMap locationIndex={0}/>                    */}
-                        <Header className="tab-header" as="h2">Day Classes</Header>
-                        
-                       <MultiTimeSlotTable
-                        timeSlot1="11:10 am — 11:50 am"
-                        timeSlot2="1:10 pm — 2:00 pm"
-                        
-                        timeOfDay="day"
-                        courses={this.hillcrestCourses}
-                       />
+                        <Header className="tab-header" as="h2">Day Classes</Header> 
+                        <MultiTimeSlotTable
+                            timeSlot1="11:10 am — 11:50 am"
+                            timeSlot2="1:10 pm — 2:00 pm"
+                            
+                            timeOfDay="day"
+                            courses={this.hillcrestCourses}
+                        />
+                   
             
                         
                         <Header className="tab-header" as="h2">Evening Classes</Header>
@@ -120,7 +120,7 @@ export default class Selection extends React.Component {
             
                 <Tab className="selection-tabs" menu={{ attached: false, tabular: false }} panes={panes} />
         
-                {/*this.props.footer*/}   
+                {this.props.footer}   
             </div>
         );
     };

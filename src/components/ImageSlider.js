@@ -20,7 +20,7 @@ export default class ImageSlider extends React.Component {
             <div className="slide-container">
                 <div className="triangle-overlay"/>
                 <Fade
-                    duration={1000}
+                    duration={1500}
                     arrows={false /* maybe add arrows in the future? */}
                 >
                     <div className="slide-show">

@@ -14,17 +14,14 @@
   font-family: "Libre Baskerville", "Georgia", serif;
 }
 
-.ui.table.table-container {
+.table-container {
   overflow-x: auto;
+  width: 100%;
 }
 
 @media only screen and (max-width: 620px) {
   .selection {
     width: 100vw;
     margin-top: 80px;
-  }
-
-  .ui.table.table-container {
-    overflow-x: auto !important;
   }
 }
