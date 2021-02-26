@@ -1,7 +1,7 @@
 import React from "react";
 import './App.css';
 import Landing from "./components/routes/Landing";
-import Selection from "./components/routes/Selection"
+import Schedule from "./components/routes/Schedule"
 import Why from "./components/routes/Information";
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import {DesktopHeader, MobileHeader} from "./components/Header";
@@ -21,8 +21,8 @@ const App = () => {
           <Route path="/" exact component={() => 
             <LandingPage/>
           }/>
-          <Route path="/course-selection" exact component={() =>
-            <Selection
+          <Route path="/course-schedule" exact component={() =>
+            <Schedule
               header={<Header/>}
               footer={<Footer/>}
             />

@@ -78,7 +78,7 @@ import {
  * Generates the Modal node
  * 
  * @param {boolean} props.isClicked 
- * @param {object} param1 
+ * @param {object} props.course
  */
 const CourseModal = (props) => {
     /*
@@ -109,6 +109,7 @@ const CourseModal = (props) => {
             key={course.id} 
             imgUrl={course.thumbnailURL}
             title={course.title}
+            teacher={course.teacher}
             courseType={course.courseType}  
         />
     </div>
@@ -148,15 +149,17 @@ const CourseModal = (props) => {
             </Modal.Header>
             <Image fluid={true} src="https://d3ewd3ysu1dfsj.cloudfront.net/images/stories/large/59523.jpg?1606777992"/>
             <Modal.Content>
-                
-                <Modal.Description style={{fontFamily: "Verdana"}}>
-                    <Header>Teacher</Header>
+                <Header className="course-blurb">
+                "Thinking about serving a mission? Come and learn what it means to become a servant in the Lord's vineyard."
+                </Header>
+                <Modal.Description>
+                    <Header className="description-header">Teacher</Header>
                     <p>{course.teacher}</p>
                     
-                    <Header>Description</Header>
+                    <Header className="description-header">Description</Header>
                     <p>{course.description}</p>
 
-                    <Header>Share this Course!</Header>
+                    <Header className="description-header">Share this Course!</Header>
                     <HelmetMetaData></HelmetMetaData>
                     {/* <SocialMediaButtons/> */}
                 </Modal.Description>
@@ -174,7 +177,7 @@ const CourseModal = (props) => {
                 </WhatsappShareButton>
             </Modal.Content>
             <Modal.Actions>
-                <Link to="/course-selection">
+                <Link to="/course-schedule">
                     <Button color='black' onClick={back}>
                         Close
                     </Button>
@@ -187,10 +190,11 @@ export default CourseModal;
 
 
 /**
- * Generate a thumbnail node, display summarizec information of the course.
+ * Generate a thumbnail node, displays a summary of the course.
  * 
  * @param {string} props.title The title of the course offered
  * @param {string} props.imgUrl Image URL associated with the course
+ * @param {string} props.teacher Who is teaching the course on offer
  */
 const CourseThumbnail = (props) => {
     return(
@@ -200,7 +204,8 @@ const CourseThumbnail = (props) => {
             <div className="title-container">
                 <div className="title-grad"/>
                 <div className="title-block">
-                    <h6>{props.title}</h6>
+                    <h6>{props.title.toString().toUpperCase()}</h6>
+                    <p>{props.teacher}</p>
                 </div>
             </div>
         </div>

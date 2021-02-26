@@ -66,7 +66,7 @@ export default class Schedule extends React.Component {
                     // tab 1
                     menuItem: 'Hillcrest Rd',
                     render: () => <Tab.Pane attached={false} className="schedule-tabs">
-                        {/* <GoogleMap locationIndex={0}/>                    */}
+                        <GoogleMap locationIndex={0}/>                   
                         <Header className="tab-header" as="h2">Day Classes</Header> 
                         <MultiTimeSlotTable
                             timeSlot1="11:10 am — 11:50 am"
@@ -90,7 +90,7 @@ export default class Schedule extends React.Component {
                     // tab 2
                     menuItem: 'Ward St',
                     render: () => <Tab.Pane attached={false} className="schedule-tabs">
-                        {/* <GoogleMap locationIndex={1}/>                      */}
+                        <GoogleMap locationIndex={1}/>                     
                         <Header className="tab-header" as="h2">Day Classes</Header>
                         <SingleTimeSlotTable
                             timeSlot="12:10 pm — 1:00 pm"

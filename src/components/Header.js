@@ -12,12 +12,12 @@ const navLinks = [
         linkTo: "/"
     },
     {
-        title: "Why Institute?",
+        title: "Why Attend Institute?",
         linkTo: "/why-institute"
     },
     {
-        title: "Course Selection",
-        linkTo: "/course-selection"
+        title: "Course Schedules",
+        linkTo: "/course-schedule"
     }
 ];
 

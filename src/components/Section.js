@@ -120,7 +120,7 @@ export const SectionBottom = () => {
                     <h4 style={{color: "white"}} className="section-header">{landingPageInfo[2].headerText}</h4>
                 </FadeInContainer>
                 <FadeInContainer>
-                    <Link to="/course-selection">
+                    <Link to="/course-schedule">
                         <button 
                             className="section-bottom-button"
                         >

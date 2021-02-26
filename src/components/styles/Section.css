@@ -12,7 +12,7 @@
 }
 
 .section-header {
-  font-family: Verdana, Geneva, Tahoma, sans-serif;
+  font-family: "Titillium Web", Verdana, sans-serif;
   /*font-family: "Libre Baskerville", "Georgia", serif;*/
   color: maroon;
   font-weight: bold;
@@ -40,7 +40,7 @@
   border-right: 0px;
   border-bottom: 10px solid #7a0126;
   padding: 10px;
-  font-family: Verdana, Geneva, Tahoma, sans-serif;
+  font-family: "Titillium Web", Verdana, sans-serif;
   font-weight: bold;
   color: white;
   font-size: 35px;
