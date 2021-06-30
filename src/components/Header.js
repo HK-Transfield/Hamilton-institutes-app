@@ -5,7 +5,9 @@ import './styles/Header.css';
 // import 'semantic-ui-css/semantic.min.css';
 import fbLogo from '../assets/img/vectors/facebook-square.svg';
 
-// store menu items
+/**
+ * Used to store all links avaiable on the web app
+ */
 const navLinks = [
     {
         title: "Welcome",
@@ -21,11 +23,18 @@ const navLinks = [
     }
 ];
 
-
+/**
+ * This header bar will display on any desktop computer or mobile tablets.
+ * It will show every page title on a clickable button.
+ * 
+ * @returns The DOM of the desktop header
+ * @author HK Transfield
+ */
 export const DesktopHeader = () => {
     const [activeItem, setActiveItem] = useState('');
 
-    const handleItemClick = (e, { name }) => setActiveItem(name);
+    // indicates which link the user click and sets the item as active
+    const handleItemClick = (e, { name }) => setActiveItem(name); 
 
     const navLinksJsx = navLinks.map((navItem, i) => {
         return(
@@ -61,13 +70,23 @@ export const DesktopHeader = () => {
     );
 }
 
+/****************************************************************************************************************************/
 
+/**
+ * When users access the website on any mobile phones. The navigation header
+ * will be transformed into a hamburger style menu, which will dropdown with
+ * links to all other pages.
+ * 
+ * @returns The DOM of the mobile header
+ * @author HK Transfield
+ */
 export const MobileHeader = () => {
     const [menuOpen, setMenuOpen] = useState(false);
 
-    const handleMenuClick = () => setMenuOpen(!menuOpen);
-    const handleLinkClick = () => setMenuOpen(false);
+    const handleMenuClick = () => setMenuOpen(!menuOpen);   // opens/closes the hamburger menu
+    const handleLinkClick = () => setMenuOpen(false);       // closes the menu when a linked is clicked
 
+    // generate approriate nodes for each navigation item
     const navLinksJsx = navLinks.map((navLink, i)=>{
         return (
            <Link to={navLink.linkTo}>
@@ -84,7 +103,7 @@ export const MobileHeader = () => {
     return(
         <div>
             <div className="hamburger-container">
-                <MenuButton open={menuOpen} onClick={()=>handleMenuClick()} color='white'/>
+                <OpenMenuButton open={menuOpen} onClick={()=>handleMenuClick()} color='white'/>
                 <div className="mobile-logo">HAMILTON INSTITUTES</div>
             </div>
             <HamburgerMenu open={menuOpen}>
@@ -97,7 +116,8 @@ export const MobileHeader = () => {
                     onClick={()=>{handleLinkClick();}}
                 >
                     <a href="https://www.facebook.com/groups/135365039879698/">
-                        <p>Facebook Group <img className="hamburger-icon" src={fbLogo} alt="Facebook Logo"/></p>
+                        {/* <p>Facebook Group <img className="hamburger-icon" src={fbLogo} alt="Facebook Logo"/></p> */}
+                        <p>Facebook Group</p>
                     </a>
                 </MenuItem>
             </HamburgerMenu>
@@ -105,9 +125,15 @@ export const MobileHeader = () => {
     );
 }
   
-
-
-  /* MenuItem.jsx*/
+/**
+ * Each link on the web application will be given a clickable item that will
+ * appear when the user opens the hamburger menu
+ * 
+ * @param {int} props.delay             Used for delayling the animation so that menu items appear one after the other
+ * @param {function} props.onClick      The user has clicked on the menu item
+ * @param {Node} props.children         The name will contain the relevant information for the link
+ * @returns The MenuItem node, which can then be added to the hamburger menu
+ */
 const MenuItem = ({delay, onClick, children}) => {
     return(
         <div className="menu-item-container" style={{animationDelay:delay}}>
@@ -123,89 +149,75 @@ const MenuItem = ({delay, onClick, children}) => {
     );  
 };
   
-
-//   /* Menu.jsx */
-// class HambsurgerMenu extends React.Component {
-//     constructor(props){
-//       super(props);
-//       this.state={
-//         open: this.props.open? this.props.open:false,
-//       }
-//     }
-      
-//     static getDerivedStateFromProps(props, state) {
-//         if(props.open !== state.open)
-//             return({open:props.open});
-//     }
-    
-//     render(){
-//       return(
-//         <div className="menu-container" style={{height: this.state.open ? '100%':0}}>
-//           {
-//             this.state.open?
-//               <div className="menu-list">
-//                 {this.props.children}
-//               </div>:null
-//           }
-//         </div>
-//       )
-//     }
-// }
-
-const HamburgerMenu = (props) => {
-    const [open, setOpen] = useState(false);
+/**
+ * 
+ * @param {*} param0 
+ * @returns 
+ */
+const HamburgerMenu = ({open, children}) => {
+    const [openMenu, setOpenMenu] = useState(false);
 
     useEffect(() => {
-        if (props.open !== open)
-            setOpen(props.open);
-    }, [props, open]);
+        if (open !== openMenu)
+            setOpenMenu(open);
+    }, [open, openMenu]);
 
     return(
-        <div className="menu-container" style={{height: open ? '100%':0}}>
+        <div className="menu-container" style={{height: openMenu ? '100%':0}}>
           {
-            open ?
+            openMenu ?
               <div className="menu-list">
-                {props.children}
+                {children}
               </div> : null
           }
         </div>
       );
 }
 
-  /* MenuButton.jsx */
-  const MenuButton = (props) => {
-    const [open, setOpen] = useState(props.open ? props.open : false);
-    const [color, setColor] = useState(props.color ? props.color : 'black');
+/**
+ * When using a mobile device, a hamburger menu button
+ * will appear at the top left corner of the screen
+ * 
+ * @param {boolean} props.open Indicates if the menu has been opened
+ * @param {string} props.color The color of the button
+ * @param {function} props.onClick The user has clicked the button
+ * @returns The OpenMenuButton node, which can be used in the mobile header
+ */
+const OpenMenuButton = ({open, color, onClick}) => {
+    const [openMenu, setOpenMenu] = useState(open ? open : false);
+    const [colorMenu, setColorMenu] = useState(color ? color : 'black');
 
     useEffect(() => {
-        if (props.open !== open)
-            setOpen(props.open);
+        if (open !== openMenu)
+            setOpenMenu(open);
 
-        if (props.color)
-            setColor(props.color);
-            
-    }, [props, open, color]);
+        if (color !== null)
+            setColorMenu(color);
 
-    const handleClick = () => setOpen(!open);
+    }, [open, color, openMenu, colorMenu]);
+    
+    // controls if the menu is opened or not
+    const handleClick = () => setOpenMenu(!openMenu);
 
+    // syles for the button to open the menu
     const styles = {
         line: {
             height: '2px',
             width: '20px',
-            background: color,
+            background: colorMenu,
             transition: 'all 0.2s ease',
         },
         lineTop: {
-            transform: open ? 'rotate(45deg)':'none',
+            transform: openMenu ? 'rotate(45deg)':'none',
             transformOrigin: 'top left',
             marginBottom: '5px',
         },
         lineMiddle: {
-            opacity: open ? 0: 1,
-            transform: open ? 'translateX(-16px)':'none',
+            opacity: openMenu ? 0: 1,
+            transform: openMenu ? 'translateX(-16px)':'none',
         },
         lineBottom: {
-            transform: open ? 'translateX(-1px) rotate(-45deg)':'none',
+            transform: openMenu ? 'translateX(-1px) rotate(-45deg)':'none',
             transformOrigin: 'top left',
             marginTop: '5px',
         },       
@@ -214,11 +226,7 @@ const HamburgerMenu = (props) => {
     return(
         <div
             className="menu-button-container"
-            onClick={props.onClick ? props.onClick: 
-                ()=> {
-                    handleClick();
-                }
-            }
+            onClick={onClick ? onClick : () => handleClick()}
         >
             <div style={{...styles.line,...styles.lineTop}}/>
             <div style={{...styles.line,...styles.lineMiddle}}/>
